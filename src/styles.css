@@ -2,3 +2,9 @@
 /* body {
     font-family: monospace;
 } */
+
+
+.no-wrap {
+    display: flex;
+    flex-wrap: nowrap;
+}

@@ -1,5 +1,8 @@
 export interface UserModel {
-    email: string,
-    password: string,
+    firstName: string
+    lastName: string
+    email: string
+    password: string
+    destination: string
     orders: any[]
 }
