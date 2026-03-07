@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 /* body {
     font-family: monospace;
+<<<<<<< HEAD
 } */
 
 
@@ -8,3 +9,10 @@
     display: flex;
     flex-wrap: nowrap;
 }
+
+.full-width {
+    width: 100%;
+}
+=======
+} */
+>>>>>>> parent of 8fdccf2 (Created login component)
