@@ -1,23 +1,18 @@
-<mat-card class="login-card">
-    <mat-card-header>
-        <h1>Login</h1>
-    </mat-card-header>
+<mat-card>
     <mat-card-content>
-
-        <div>
-            <mat-form-field class="full-width">
+        <h1>Login</h1>
+        <div class="no-wrap">
+            <mat-form-field>
                 <mat-label>Email</mat-label>
-                <input matInput type="email" [(ngModel)]="email">
+                <input matInput type="email">
             </mat-form-field>
-            <mat-form-field class="full-width">
+            <mat-form-field>
                 <mat-label>Password</mat-label>
-                <input matInput type="password" [(ngModel)]="password">
+                <input matInput type="password">
             </mat-form-field>
         </div>
     </mat-card-content>
     <mat-card-actions>
-        <button type="button" matButton (click)="doLogin()">
-            <mat-icon fontIcon="login" />Submit
-        </button>
+        <button matButton>Submit</button>
     </mat-card-actions>
 </mat-card>
