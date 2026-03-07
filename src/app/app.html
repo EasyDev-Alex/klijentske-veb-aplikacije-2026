@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
     <span>
-         
+
         <strong>KVA2026</strong>
     </span>
     <span class="spacer"></span>
@@ -10,6 +10,18 @@
     <a routerLink="/about" matButton>
         <mat-icon fontIcon="info" /> About
     </a>
+    @if(activeUser) {
+    <a routerLink="/user" matButton>
+        <mat-icon fontIcon="admin_panel_settings" /> Account
+    </a>
+    <button matButton (click)="doLogout()">
+        <mat-icon fontIcon="user" /> Logout
+    </button>
+    } @else {
+    <a routerLink="/login" matButton>
+        <mat-icon fontIcon="login" /> Login
+    </a>
+    }
     <!-- <button matButton [matMenuTriggerFor]="afterMenu">
         Korisnik
     </button>
@@ -21,4 +33,3 @@
 <div class="wrapper">
     <router-outlet />
 </div>
-

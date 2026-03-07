@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
-import { RouterLinkWithHref, RouterOutlet } from '@angular/router';
+import { Router, RouterLinkWithHref, RouterOutlet } from '@angular/router';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -13,11 +14,18 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule,
     MatMenuModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
   ],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
+  activeUser = AuthService.getActiveUser()
 
+  constructor(private router: Router) {}
+
+  doLogout() {
+    AuthService.logout();
+    this.router.navigate(['/login']);
+  }
 }

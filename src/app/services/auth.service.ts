@@ -24,8 +24,10 @@ export class AuthService {
         for (let u of users) {
             if (u.email === email && u.password === password) {
                 localStorage.setItem(ACTIVE, email)
+                return true
             }
         }
+        return false
     }
 
     static getActiveUser(): UserModel | null {
@@ -37,5 +39,9 @@ export class AuthService {
         }
 
         return null
+    }
+
+    static logout() {
+        localStorage.removeItem(ACTIVE)
     }
 }
