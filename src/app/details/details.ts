@@ -11,7 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-details',
-  imports: [MatCardModule],
+  imports: [MatCardModule, MatListModule, MatIconModule],
   templateUrl: './details.html',
   styleUrl: './details.css',
 })
