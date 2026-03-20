@@ -12,7 +12,7 @@
                 <mat-list-item>
                     <mat-icon matListItemIcon>history_2</mat-icon>
                     <div matListItemTitle>Scheduled At</div>
-                    <div matListItemLine>{{flight()?.scheduledAt}}</div>
+                    <div matListItemLine>{{utils.formatDate(flight()!.scheduledAt)}}</div>
                 </mat-list-item><mat-list-item>
                     <mat-icon matListItemIcon>flight</mat-icon>
                     <div matListItemTitle>Airplane Model</div>
