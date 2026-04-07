@@ -1,4 +1,10 @@
+
+/* Currently has no use*/
 .no-wrap {
     display: flex;
     flex-wrap: nowrap;
+}
+
+.full-width {
+    width: 100%;
 }
