@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { RouterLinkWithHref, RouterOutlet } from '@angular/router';
+import { Router, RouterLinkWithHref, RouterOutlet } from '@angular/router';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -21,10 +21,18 @@ import { AuthService } from './services/auth.service';
 })
 export class App {
 
-// The following code is commented because it breaks the whole app. Don't know why yet.
+// The following code is commented because it breaks the whole app. Don't know why yet. The first line breaks it.
 
   // activeUser = AuthService.getActiveUser()
-  // doLogout() {
-  //   AuthService.logout()
-  // }
+
+  
+
+  constructor(private router: Router) {
+
+  }
+
+  doLogout() {
+    AuthService.logout()
+    this.router.navigate(['/login'])
+  }
 }
