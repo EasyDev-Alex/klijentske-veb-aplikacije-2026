@@ -4,6 +4,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,10 +14,21 @@ import { MatInputModule } from '@angular/material/input';
   styleUrl: './login.css',
 })
 export class Login {
-  email: string = ''
-  password: string = ''
+  email: string = 'user@example.com'
+  password: string = 'user123'
+
+  constructor(private router: Router) {
+    if (AuthService.getActiveUser()) {
+      router.navigate(['/'])
+    }
+  }
 
   doLogin() {
     console.log(this.email, this.password)
+    if (AuthService.login(this.email, this.password)) {
+      this.router.navigate(['/'])
+    }
+
+    alert('Invalid email or password')
   }
 }
