@@ -4,6 +4,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -20,4 +21,10 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class App {
 
+// The following code is commented because it breaks the whole app. Don't know why yet.
+
+  // activeUser = AuthService.getActiveUser()
+  // doLogout() {
+  //   AuthService.logout()
+  // }
 }

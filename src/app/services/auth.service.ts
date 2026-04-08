@@ -41,4 +41,8 @@ export class AuthService {
 
         return null
     }
+
+    static logout(){
+        localStorage.removeItem(ACTIVE)
+    }
 }

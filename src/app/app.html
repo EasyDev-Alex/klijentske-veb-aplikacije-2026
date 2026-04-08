@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
     <span>
-         
+
         <strong>KVA2026</strong>
     </span>
     <span class="spacer"></span>
@@ -10,13 +10,22 @@
     <a routerLink="/about" matButton>
         <mat-icon fontIcon="info" /> About
     </a>
-    <!-- <button matButton [matMenuTriggerFor]="afterMenu">
-        Korisnik
+
+<!-- The following code is commented because it relies on the logout function which isn't working properly -->
+
+    <!-- @if(activeUser) {
+    <a routerLink="/user" matButton>
+        <mat-icon fontIcon="user" /> Account
+    </a>
+    <button matButton (click)="doLogout()">
+        <mat-icon fontIcon="logout" /> Logout
     </button>
-    <mat-menu #afterMenu="matMenu" xPosition="after">
-        <button mat-menu-item>Item 1</button>
-        <button mat-menu-item>Item 2</button>
-    </mat-menu> -->
+    } @else {
+    <a routerLink="/login" matButton>
+        <mat-icon fontIcon="login" /> Login
+    </a>
+    } -->
+
 </mat-toolbar>
 <div class="wrapper">
     <router-outlet />

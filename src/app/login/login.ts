@@ -27,6 +27,7 @@ export class Login {
     console.log(this.email, this.password)
     if (AuthService.login(this.email, this.password)) {
       this.router.navigate(['/'])
+      return
     }
 
     alert('Invalid email or password')
