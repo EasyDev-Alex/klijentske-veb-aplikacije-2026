@@ -6,16 +6,17 @@
 
         <div>
             <mat-form-field class="full-width">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" [(ngModel)]="activeUser!.email" disabled>
+            </mat-form-field>
+            <mat-form-field class="full-width">
                 <mat-label>First Name</mat-label>
                 <input matInput type="text" [(ngModel)]="activeUser!.firstName">
             </mat-form-field> <mat-form-field class="full-width">
                 <mat-label>Last Name</mat-label>
                 <input matInput type="text" [(ngModel)]="activeUser!.lastName">
             </mat-form-field>
-            <mat-form-field class="full-width">
-                <mat-label>Email</mat-label>
-                <input matInput type="email" [(ngModel)]="activeUser!.email">
-            </mat-form-field>
+
             <mat-form-field class="full-width">
                 <mat-label>Address</mat-label>
                 <input matInput type="text" [(ngModel)]="activeUser!.address">
@@ -24,7 +25,7 @@
                 <mat-label>Phone Number</mat-label>
                 <input matInput type="text" [(ngModel)]="activeUser!.phone">
             </mat-form-field>
-            <mat-form-field  class="full-width">
+            <mat-form-field class="full-width">
                 <mat-label>Favorite Destination</mat-label>
                 <mat-select [(ngModel)]="activeUser!.destination">
                     @for (dest of destinations(); track dest) {
@@ -35,8 +36,8 @@
         </div>
     </mat-card-content>
     <mat-card-actions>
-        <!-- <button type="button" matButton (click)="doLogin()">
-            <mat-icon fontIcon="login" />Submit
-        </button> -->
+        <button type="button" matButton (click)="updateUser()">
+            <mat-icon fontIcon="save" />Save Changes
+        </button>
     </mat-card-actions>
 </mat-card>
