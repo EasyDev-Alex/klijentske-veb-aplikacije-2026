@@ -6,14 +6,14 @@ const ACTIVE = 'active'
 export class AuthService {
     static getUsers(): UserModel[] {
         if (localStorage.getItem(USERS)) {
-            localStorage.setItem(USERS, JSON.stringify({
+            localStorage.setItem(USERS, JSON.stringify([{
                 email: 'user@example.com',
                 password: 'user123',
                 destination: 'Zagreb',
                 firstName: 'Example',
                 lastName: 'User',
                 orders: []
-            }))
+            }]))
         }
 
         return JSON.parse(localStorage.getItem(USERS)!)

@@ -23,7 +23,7 @@ export class App {
 
 // The following code is commented because it breaks the whole app. Don't know why yet. The first line breaks it.
 
-  // activeUser = AuthService.getActiveUser()
+   activeUser = AuthService.getActiveUser()
 
   
 
