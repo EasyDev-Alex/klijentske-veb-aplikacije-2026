@@ -25,6 +25,14 @@
             </mat-list>
 
         </mat-card-content>
+
+        @if (authService.getActiveUser()) {
+        <mat-card-actions>
+            <a [routerLink]="`/details/${flight()?.id}/booking`" matButton>
+                <mat-icon fontIcon="airplane_ticket" />BUY
+            </a>
+        </mat-card-actions>
+        }
     </mat-card>
 
 </div>

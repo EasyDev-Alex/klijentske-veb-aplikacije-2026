@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import axios from 'axios';
 import { FlightModel } from '../../models/flight.model';
 import { Utils } from '../utils';
@@ -7,15 +7,18 @@ import { MatCardMdImage, MatCardModule } from '@angular/material/card';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import { AuthService } from '../services/auth.service';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @Component({
   selector: 'app-details',
-  imports: [MatCardModule, MatListModule, MatIconModule],
+  imports: [MatCardModule, MatListModule, MatIconModule, RouterLink, MatButtonModule],
   templateUrl: './details.html',
   styleUrl: './details.css',
 })
 export class Details {
+  public authService = AuthService
   flight = signal<FlightModel | null>(null)
 
   constructor(route: ActivatedRoute, public utils: Utils, private sanitizer: DomSanitizer) {

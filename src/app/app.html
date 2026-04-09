@@ -12,9 +12,9 @@
     </a>
 
 
-    @if(activeUser) {
+    @if(authService.getActiveUser()) {
     <a routerLink="/user" matButton>
-        <mat-icon fontIcon="user" /> Account
+        <mat-icon fontIcon="account_circle" /> Account
     </a>
     <button matButton (click)="doLogout()">
         <mat-icon fontIcon="logout" /> Logout

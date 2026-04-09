@@ -21,7 +21,7 @@ import { AuthService } from './services/auth.service';
 })
 export class App {
 
-   activeUser = AuthService.getActiveUser()
+   public authService = AuthService
 
   constructor(private router: Router) {
 
