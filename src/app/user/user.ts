@@ -20,6 +20,7 @@ import { Alerts } from '../alerts';
 export class User {
   public activeUser = AuthService.getActiveUser()
   destinations = signal<string[]>([])
+  oldPassword: string = ''
   newPassword: string = ''
   passwordRepeat: string = ''
 
@@ -36,5 +37,33 @@ export class User {
   updateUser() {
     AuthService.updateActiveUser(this.activeUser!)
     Alerts.success("User updated successfully!")
+  }
+
+  updatePassword() {
+    if (this.oldPassword != this.activeUser?.password) {
+      Alerts.error("Old password is incorrect!")
+      return
+    }
+
+    if (this.newPassword != this.passwordRepeat) {
+      Alerts.error("Passwords do not match!")
+      return
+    }
+
+    if (this.newPassword.length < 6) {
+      Alerts.error("Password must be at least 6 characters long!")
+      return
+    }
+
+    if (this.newPassword == this.oldPassword) {
+      Alerts.error("New password cannot be the same as the old password!")
+      return
+    }
+
+    AuthService.updateActiveUserPassword(this.newPassword)
+
+    Alerts.success("Password updated successfully!")
+    AuthService.logout()
+    this.router.navigate(['/login'])
   }
 }

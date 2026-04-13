@@ -42,6 +42,34 @@
         </button>
     </mat-card-actions>
 </mat-card>
+
+<mat-card class="small-card">
+    <mat-card-header>
+        <h1>Change Password</h1>
+    </mat-card-header>
+    <mat-card-content>
+
+        <div>
+            <mat-form-field class="full-width">
+                <mat-label>Old Password</mat-label>
+                <input matInput type="password" [(ngModel)]="oldPassword">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>New Password</mat-label>
+                <input matInput type="password" [(ngModel)]="newPassword">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Repeat New Password</mat-label>
+                <input matInput type="password" [(ngModel)]="passwordRepeat">
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <button type="button" matButton (click)="updatePassword()">
+            <mat-icon fontIcon="password" />Update Password
+        </button>
+    </mat-card-actions>
+</mat-card>
 } @else {
-    <app-loading />
+<app-loading />
 }
