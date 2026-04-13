@@ -35,35 +35,42 @@ export class User {
   }
 
   updateUser() {
-    AuthService.updateActiveUser(this.activeUser!)
-    Alerts.success("User updated successfully!")
+    Alerts.confirm("Confirm changes?", "Are you sure you want to update your information?", () => {
+      AuthService.updateActiveUser(this.activeUser!)
+      Alerts.success("User updated successfully!")
+    })
+
   }
 
   updatePassword() {
-    if (this.oldPassword != this.activeUser?.password) {
-      Alerts.error("Old password is incorrect!")
-      return
-    }
 
-    if (this.newPassword != this.passwordRepeat) {
-      Alerts.error("Passwords do not match!")
-      return
-    }
+    Alerts.confirm("Confirm changes?", "Are you sure you want to change your password?", () => {
+      if (this.oldPassword != this.activeUser?.password) {
+        Alerts.error("Old password is incorrect!")
+        return
+      }
 
-    if (this.newPassword.length < 6) {
-      Alerts.error("Password must be at least 6 characters long!")
-      return
-    }
+      if (this.newPassword != this.passwordRepeat) {
+        Alerts.error("Passwords do not match!")
+        return
+      }
 
-    if (this.newPassword == this.oldPassword) {
-      Alerts.error("New password cannot be the same as the old password!")
-      return
-    }
+      if (this.newPassword.length < 6) {
+        Alerts.error("Password must be at least 6 characters long!")
+        return
+      }
 
-    AuthService.updateActiveUserPassword(this.newPassword)
+      if (this.newPassword == this.oldPassword) {
+        Alerts.error("New password cannot be the same as the old password!")
+        return
+      }
 
-    Alerts.success("Password updated successfully!")
-    AuthService.logout()
-    this.router.navigate(['/login'])
+      AuthService.updateActiveUserPassword(this.newPassword)
+
+      Alerts.success("Password updated successfully!")
+      AuthService.logout()
+      this.router.navigate(['/login'])
+    })
+
   }
 }
