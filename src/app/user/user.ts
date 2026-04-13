@@ -8,10 +8,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import { FlightService } from '../services/flight.service';
+import { Loading } from '../loading/loading';
 
 @Component({
   selector: 'app-user',
-  imports: [MatCardModule, MatInputModule, MatButtonModule, MatIconModule, FormsModule, MatSelectModule],
+  imports: [MatCardModule, MatInputModule, MatButtonModule, MatIconModule, FormsModule, MatSelectModule, Loading],
   templateUrl: './user.html',
   styleUrl: './user.css',
 })
