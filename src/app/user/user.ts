@@ -6,9 +6,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 import { FlightService } from '../services/flight.service';
 import { Loading } from '../loading/loading';
+import { Alerts } from '../alerts';
 
 @Component({
   selector: 'app-user',
@@ -19,6 +20,8 @@ import { Loading } from '../loading/loading';
 export class User {
   public activeUser = AuthService.getActiveUser()
   destinations = signal<string[]>([])
+  newPassword: string = ''
+  passwordRepeat: string = ''
 
   constructor(private router: Router) {
     if (!AuthService.getActiveUser()) {
@@ -27,11 +30,11 @@ export class User {
     }
 
     FlightService.getDestinations()
-    .then(rsp => this.destinations.set(rsp.data))
+      .then(rsp => this.destinations.set(rsp.data))
   }
 
   updateUser() {
     AuthService.updateActiveUser(this.activeUser!)
-    alert('User updated successfully!')
+    Alerts.success("User updated successfully!")
   }
 }
