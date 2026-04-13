@@ -1,6 +1,5 @@
 import { Component, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import axios from 'axios';
 import { FlightModel } from '../../models/flight.model';
 import { Utils } from '../utils';
 import { MatCardMdImage, MatCardModule } from '@angular/material/card';
@@ -9,6 +8,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { AuthService } from '../services/auth.service';
 import { MatButtonModule } from '@angular/material/button';
+import { FlightService } from '../services/flight.service';
 
 
 @Component({
@@ -24,7 +24,7 @@ export class Details {
   constructor(route: ActivatedRoute, public utils: Utils, private sanitizer: DomSanitizer) {
     route.params.subscribe(params => {
       const id = params['id']
-      axios.get(`https://flight.pequla.com/api/flight/${id}`)
+      FlightService.getFlightById(id)
         .then(rsp => this.flight.set(rsp.data))
     })
   }
