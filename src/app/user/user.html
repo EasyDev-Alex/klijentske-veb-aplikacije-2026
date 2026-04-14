@@ -7,10 +7,10 @@
         <mat-card-content>
 
             <div>
-                <mat-form-field class="full-width">
+                <!-- <mat-form-field class="full-width">
                     <mat-label>Email</mat-label>
                     <input matInput type="email" [(ngModel)]="activeUser!.email" disabled>
-                </mat-form-field>
+                </mat-form-field> -->
                 <mat-form-field class="full-width">
                     <mat-label>First Name</mat-label>
                     <input matInput type="text" [(ngModel)]="activeUser!.firstName">
@@ -85,6 +85,23 @@
             </mat-card-actions>
         </mat-card>
     </div>
+    <mat-card class="user-card">
+        <mat-card-header>
+            <h1>Recommended Flights</h1>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-list>
+                @for(f of recommended(); track $index){
+                <mat-list-item>
+                    <mat-icon matListItemIcon>flight</mat-icon>
+                    <div matListItemTitle>{{f.flightNumber}}</div>
+                    <div matListItemLine>{{utils.formatDate(f.scheduledAt)}}</div>
+                    <a [routerLink]="`/details/${f.id}`" matButton>Details</a>
+                </mat-list-item>
+                }
+            </mat-list>
+        </mat-card-content>
+    </mat-card>
 </div>
 } @else {
 <app-loading />
