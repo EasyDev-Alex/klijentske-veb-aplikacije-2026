@@ -30,8 +30,14 @@ export class User {
       return
     }
 
+
+
     FlightService.getDestinations()
       .then(rsp => this.destinations.set(rsp.data))
+  }
+
+  getAvatarUrl() {
+    return `https://ui-avatars.com/api/?name=${this.activeUser?.firstName}+${this.activeUser?.lastName}`;
   }
 
   updateUser() {
