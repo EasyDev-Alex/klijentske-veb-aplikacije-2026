@@ -1,1 +1,45 @@
-<p>order works!</p>
+@if(flight() != null) {
+<div class="flex-wrapper">
+    <mat-card class="flex-card" appearance="outlined">
+        <img mat-card-image [src]="utils.getImageUrl(flight()!)" [alt]="flight()?.destination">
+        <mat-card-content>
+            <h1>{{flight()?.destination}}</h1>
+            <mat-list>
+                <mat-list-item>
+                    <mat-icon matListItemIcon>location_on</mat-icon>
+                    <div matListItemTitle>Destination</div>
+                    <div matListItemLine>{{flight()!.destination}}</div>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-icon matListItemIcon>tag</mat-icon>
+                    <div matListItemTitle>Flight Number</div>
+                    <div matListItemLine>{{flight()!.flightNumber}}</div>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-icon matListItemIcon>history_2</mat-icon>
+                    <div matListItemTitle>Scheduled At</div>
+                    <div matListItemLine>{{utils.formatDate(flight()!.scheduledAt)}}</div>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-icon matListItemIcon>flight</mat-icon>
+                    <div matListItemTitle>Airplane Model</div>
+                    <div matListItemLine>{{flight()?.plane}}</div>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-icon matListItemIcon>bookmark</mat-icon>
+                    <div matListItemTitle>Terminal</div>
+                    <div matListItemLine>{{flight()?.terminal}}</div>
+                </mat-list-item>
+            </mat-list>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="flex-card" appearance="outlined">
+        <mat-card-content>
+            
+        </mat-card-content>
+    </mat-card>
+</div>
+
+} @else {
+<app-loading />
+}
