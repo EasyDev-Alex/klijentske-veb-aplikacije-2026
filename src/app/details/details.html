@@ -28,8 +28,8 @@
 
         @if (authService.getActiveUser()) {
         <mat-card-actions>
-            <a [routerLink]="`/details/${flight()?.id}/booking`" matButton>
-                <mat-icon fontIcon="airplane_ticket" />BUY
+            <a [routerLink]="`/details/${flight()?.id}/order`" matButton>
+                <mat-icon fontIcon="airplane_ticket" />ORDER
             </a>
         </mat-card-actions>
         }
