@@ -3,6 +3,7 @@ export interface OrderModel {
     airlineId: number
     seatingTypeId: number
     ageGroup: 'a' | 'c'
+    state: 'w' | 'c' | 'p'
     count: number
     createdAt: string
 }

@@ -30,7 +30,7 @@ export class Alerts {
     static confirm(title: string, text: string, callback: Function) {
         Swal.fire({
             title,
-            text,
+            html: text, // if app breaks, change back to text:, and remove <strong> tags from the confirm function in placeOrder() in order.ts
             icon: "question",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",

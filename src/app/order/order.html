@@ -62,7 +62,7 @@
                     <mat-label>Ticket Count</mat-label>
                     <input matInput type="number" [(ngModel)]="order.count">
                 </mat-form-field>
-                <h3>Total: {{calculateTotal()}} EUR</h3>
+                <h3>Total: €{{calculateTotal()}}</h3>
                 <button matButton type="button" (click)="placeOrder()">Place Order</button>
         </mat-card-content>
     </mat-card>
