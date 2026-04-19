@@ -88,4 +88,16 @@ export class AuthService {
         }
         localStorage.setItem(USERS, JSON.stringify(users))
     }
+
+    static getOrdersOnWaiting() {
+
+        const users = this.getUsers()
+        for (let u of users) {
+            if (u.email === localStorage.getItem(ACTIVE)) {
+                return u.orders.filter((o) => o.state === 'w')  // For some reason, this if statement is always false, and the function always returns an empty array
+            }
+        }
+
+        return []  // The function always goes here
+    }
 }

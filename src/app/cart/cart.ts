@@ -14,5 +14,10 @@ export class Cart {
       this.router.navigate(['/login'])
       return
     }
+
+  }
+
+  getOrders() {
+    return JSON.stringify(AuthService.getOrdersOnWaiting())
   }
 }
