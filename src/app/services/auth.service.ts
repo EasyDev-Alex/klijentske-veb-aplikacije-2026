@@ -1,3 +1,4 @@
+import { FlightModel } from "../../models/flight.model"
 import { OrderModel } from "../../models/order.model"
 import { UserModel } from "../../models/user.model"
 
@@ -75,16 +76,18 @@ export class AuthService {
         localStorage.removeItem(ACTIVE)
     }
 
-    static createOrder(order: Partial<OrderModel>, flightId: number) {
+    static createOrder(order: Partial<OrderModel>, flight: FlightModel) {
         order.state = 'w'
-        order.flightId = flightId
+        order.flightId = flight.id
+        order.flightNumber = flight.flightNumber
+        order.destination = flight.destination
+        order.scheduledAt = flight.scheduledAt
         order.createdAt = new Date().toISOString()
 
         const users = this.getUsers()
         for (let u of users) {
 
             if (u.email === localStorage.getItem(ACTIVE)) {
-                console.log(u.orders, order)
                 u.orders.push(order as OrderModel)
             }
         }
@@ -95,7 +98,6 @@ export class AuthService {
         const users = this.getUsers()     
         for (let u of users) {
             if (u.email === localStorage.getItem(ACTIVE)) {
-                console.log(u)
                 return u.orders.filter((o) => o.state === 'w')  // For some reason, this if statement is always false, and the function always returns an empty array
             }
         }

@@ -1,28 +1,32 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { DataService } from '../services/data.service';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-cart',
-  imports: [],
+  imports: [MatCardModule],
   templateUrl: './cart.html',
   styleUrl: './cart.css',
 })
 export class Cart {
+  airlines = DataService.getAirlines()
+  types = DataService.getSeatingTypes()
+
   constructor(public router: Router) {
     if (!AuthService.getActiveUser()) {
       this.router.navigate(['/login'])
       return
     }
 
-    const orders = AuthService.getOrdersOnWaiting()
-    console.log(orders)
+    // const orders = AuthService.getOrdersOnWaiting()
 
   }
 
 
 
   getOrders() {
-    return JSON.stringify(AuthService.getOrdersOnWaiting(), null, 2)
+    return AuthService.getOrdersOnWaiting()
   }
 }

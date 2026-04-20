@@ -57,7 +57,7 @@ export class Order {
 
   placeOrder() {
     Alerts.confirm("Confirm order?", `Are you sure you want to place this order for <strong>€${this.calculateTotal()}</strong>?`, () => { // if alert breaks, remove <strong> tags. Also remove html: from the confirm function in alerts.ts
-      AuthService.createOrder(this.order, this.flight()!.id)
+      AuthService.createOrder(this.order, this.flight()!)
       this.router.navigate(['/cart'])
     })
     

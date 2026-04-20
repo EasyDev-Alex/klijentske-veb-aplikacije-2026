@@ -1,5 +1,8 @@
 export interface OrderModel {
     flightId: number
+    flightNumber: string
+    destination: string
+    scheduledAt: string
     airlineId: number
     seatingTypeId: number
     ageGroup: 'a' | 'c'
