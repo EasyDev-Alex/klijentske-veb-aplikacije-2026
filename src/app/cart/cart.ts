@@ -15,9 +15,14 @@ export class Cart {
       return
     }
 
+    const orders = AuthService.getOrdersOnWaiting()
+    console.log(orders)
+
   }
 
+
+
   getOrders() {
-    return JSON.stringify(AuthService.getOrdersOnWaiting())
+    return JSON.stringify(AuthService.getOrdersOnWaiting(), null, 2)
   }
 }
