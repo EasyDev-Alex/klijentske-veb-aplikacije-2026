@@ -13,6 +13,9 @@
 
 
     @if(authService.getActiveUser()) {
+    <a routerLink="/cart" matButton>
+        <mat-icon fontIcon="shopping_cart" /> Cart
+    </a>
     <a routerLink="/user" matButton>
         <mat-icon fontIcon="account_circle" /> Account
     </a>
