@@ -94,14 +94,55 @@ export class AuthService {
         localStorage.setItem(USERS, JSON.stringify(users))
     }
 
-    static getOrdersOnWaiting() {
+    // static getOrdersOnWaiting() {
+    //     const users = this.getUsers()     
+    //     for (let u of users) {
+    //         if (u.email === localStorage.getItem(ACTIVE)) {
+    //             return u.orders.filter((o) => o.state === 'w')
+    //         }
+    //     }
+
+    //     return []
+    // }
+
+    static getOrdersByState(state: 'w' | 'c' | 'p') {
         const users = this.getUsers()     
         for (let u of users) {
             if (u.email === localStorage.getItem(ACTIVE)) {
-                return u.orders.filter((o) => o.state === 'w')  // For some reason, this if statement is always false, and the function always returns an empty array
+                return u.orders.filter((o) => o.state === state)
             }
         }
 
-        return []  // The function always goes here
+        return []
+    }
+
+    static cancelOrder(createdAt: string) {
+        const users = this.getUsers()     
+        for (let u of users) {
+            if (u.email === localStorage.getItem(ACTIVE)) {
+                for (let o of u.orders) {
+                    if (o.state == 'w' && o.createdAt == createdAt) {
+                        o.state = 'c'
+                    }
+                }
+
+            }
+        }
+        localStorage.setItem(USERS, JSON.stringify(users))
+    }
+
+    static payOrders() {
+        const users = this.getUsers()     
+        for (let u of users) {
+            if (u.email === localStorage.getItem(ACTIVE)) {
+                for (let o of u.orders) {
+                    if (o.state == 'w') {
+                        o.state = 'p'
+                    }
+                }
+            }
+        }
+
+        localStorage.setItem(USERS, JSON.stringify(users))
     }
 }
