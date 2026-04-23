@@ -8,7 +8,8 @@ import { OrderModel } from '../../models/order.model';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { Utils } from '../utils';
-import { Alerts } from '../alerts';
+import { Alerts, matCustomClass } from '../alerts';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cart',
@@ -28,16 +29,25 @@ export class Cart {
     }
   }
 
+  reloadComponent() {
+    const currentUrl = this.router.url
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/cart'])
+    })
+  }
+
   async removeOrder(order: OrderModel) {
     Alerts.confirm('Confirm Removal', `Are you sure you want to remove ${order.count} ticket${order.count > 1 ? 's' : ''} for ${order.destination}?`, () => {
       AuthService.cancelOrder(order.createdAt)
+      this.reloadComponent()
+
     })
   }
 
   payAll() {
     Alerts.confirm('Confirm Payment?', `<strong>Total: €${this.calculateTotal()}</strong>`, () => {
       AuthService.payOrders()
-      this.router.navigate(['/user'])
+      this.reloadComponent()
     })
   }
 
@@ -49,10 +59,24 @@ export class Cart {
     return total
   }
 
-  
+  showBarcode(order: OrderModel) {
+    const barcode = new Date(order.createdAt).getTime()
+    const src = `https://quickchart.io/barcode?type=code128&text=${barcode}&width=250&height=80&includeText=true`
+    Swal.fire({
+      title: `${order.destination} (${order.flightNumber})`,
+      customClass: matCustomClass,
+      html: `
+      <img src="${src}" />
+      `,
+    })
+  }
 
   getOrders() {
     return AuthService.getOrdersByState('w')
+  }
+
+  getPaidOrders() {
+    return AuthService.getOrdersByState('p')
   }
 
   getCanceledOrders() {
