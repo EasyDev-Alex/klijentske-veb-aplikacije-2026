@@ -6,9 +6,9 @@ import { MatCardMdImage, MatCardModule } from '@angular/material/card';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { MatButtonModule } from '@angular/material/button';
-import { FlightService } from '../services/flight.service';
+import { FlightService } from '../../services/flight.service';
 import { Loading } from '../loading/loading';
 
 

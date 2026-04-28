@@ -1,8 +1,8 @@
 import { Component, signal } from '@angular/core';
 import { FlightModel } from '../../models/flight.model';
-import { DataService } from '../services/data.service';
+import { DataService } from '../../services/data.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { FlightService } from '../services/flight.service';
+import { FlightService } from '../../services/flight.service';
 import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,7 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormField, MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { OrderModel } from '../../models/order.model';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { Alerts } from '../alerts';
 
 @Component({

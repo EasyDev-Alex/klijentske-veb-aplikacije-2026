@@ -1,5 +1,5 @@
 import axios from "axios";
-import { FlightModel } from "../../models/flight.model";
+import { FlightModel } from "../models/flight.model";
 
 const client = axios.create({
     baseURL: 'https://flight.pequla.com/api',

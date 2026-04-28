@@ -4,8 +4,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { FlightService } from '../services/flight.service';
+import { FlightService } from '../../services/flight.service';
 import { MatSelectModule } from '@angular/material/select';
+import { UserModel } from '../../models/user.model';
+import { Alerts } from '../alerts';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -14,23 +18,48 @@ import { MatSelectModule } from '@angular/material/select';
   styleUrl: './signup.css',
 })
 export class Signup {
-  email: string = ''
-  firstName: string = ''
-  lastName: string = ''
-  phone: string = ''
-  address: string = ''
-  password: string = ''
-  repeat: string = ''
-  destination: string = ''
 
+  user: Partial<UserModel> = {
+    email: '',
+    firstName: '',
+    lastName: '',
+    phone: '',
+    address: '',
+    password: '',
+    destination: '',
+  }
+
+  repeat: string = ''
   destinations = signal<string[]>([])
 
-  constructor() {
+  constructor(public router: Router) {
     FlightService.getDestinations()
     .then(rsp => this.destinations.set(rsp.data))
   }
 
   doSignup() {
+    
 
+    if (AuthService.existsByEmail(this.user.email!)) {
+      Alerts.error('Email already registered!')
+      return
+    }
+
+    if (this.user.firstName == '' || this.user.lastName == '' || this.user.address == '' || this.user.destination == '' || this.user.phone == '') {
+      Alerts.error('All fields must have a value!')
+      return
+    }
+
+    if (this.user.password!.length < 6) {
+      Alerts.error('Password must be at least 6 characters long!')
+    }
+
+    if (this.user.password !== this.repeat) {
+      Alerts.error("Passwords don't match!");
+      return
+    }
+
+    AuthService.createUser(this.user)
+    this.router.navigate(['/login'])
   }
 }

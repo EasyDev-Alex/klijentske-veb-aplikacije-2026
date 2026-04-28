@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FlightModel } from '../models/flight.model';
 import { OrderModel } from '../models/order.model';
-import { DataService } from './services/data.service';
+import { DataService } from '../services/data.service';
 
 @Injectable({
   providedIn: 'root',

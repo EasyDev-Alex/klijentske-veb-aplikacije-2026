@@ -8,27 +8,27 @@
         <div>
             <mat-form-field class="full-width">
                 <mat-label>First Name</mat-label>
-                <input matInput type="text" [(ngModel)]="firstName">
+                <input matInput type="text" [(ngModel)]="user.firstName">
             </mat-form-field>
             <mat-form-field class="full-width">
                 <mat-label>Last Name</mat-label>
-                <input matInput type="text" [(ngModel)]="lastName">
+                <input matInput type="text" [(ngModel)]="user.lastName">
             </mat-form-field>
             <mat-form-field class="full-width">
                 <mat-label>Email</mat-label>
-                <input matInput type="email" [(ngModel)]="email">
+                <input matInput type="email" [(ngModel)]="user.email" id="email">
             </mat-form-field>
             <mat-form-field class="full-width">
                 <mat-label>Phone</mat-label>
-                <input matInput type="text" [(ngModel)]="phone">
+                <input matInput type="text" [(ngModel)]="user.phone">
             </mat-form-field>
             <mat-form-field class="full-width">
                 <mat-label>Address</mat-label>
-                <input matInput type="text" [(ngModel)]="address">
+                <input matInput type="text" [(ngModel)]="user.address">
             </mat-form-field>
             <mat-form-field class="full-width">
                 <mat-label>Favorite Destination</mat-label>
-                <mat-select [(ngModel)]="destination">
+                <mat-select [(ngModel)]="user.destination">
                     @for (dest of destinations(); track dest) {
                     <mat-option [value]="dest">{{dest}}</mat-option>
                     }
@@ -36,7 +36,7 @@
             </mat-form-field>
             <mat-form-field class="full-width">
                 <mat-label>Password</mat-label>
-                <input matInput type="password" [(ngModel)]="password">
+                <input matInput type="password" [(ngModel)]="user.password" id="password">
             </mat-form-field>
             <mat-form-field class="full-width">
                 <mat-label>Repeat Password</mat-label>
